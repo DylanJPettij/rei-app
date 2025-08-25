@@ -1,7 +1,11 @@
-
+import MainLayout from "@/layouts/MainLayout"
+import PropertyTable from "@/components/proptable/PropertyTable";
 const MyProperties = () =>{
     return(
-            <div>This is a test page</div>
+        <>
+        <MainLayout />
+        <PropertyTable />
+        </>
     );
 }
 

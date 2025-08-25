@@ -1,8 +1,13 @@
+import MainLayout from "@/layouts/MainLayout";
+
 const RenovationCalculator = () =>{
     return(
-        <div>
-            <h1>this is an example</h1>
+       <>
+       <MainLayout />
+        <div className="flex h-screen justify-center items-center">
+            <h1 className="font-bold">This is the Renovation Calculator Page</h1>
         </div>
+       </>
     );
 }
 
