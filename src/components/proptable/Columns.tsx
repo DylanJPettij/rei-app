@@ -1,7 +1,6 @@
 import type { ColumnDef } from "@tanstack/react-table"
 
 import { MoreHorizontal } from "lucide-react"
-
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -12,18 +11,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
+
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
 export type Property = {
   id: string
   purchasePrice: number
   downPayment: number
-  email: string
   interestRate: number
-  cashOnCash: number
   
 }
-
 
 export const columns: ColumnDef<Property>[] = [
   {
@@ -39,10 +36,6 @@ export const columns: ColumnDef<Property>[] = [
       return <div className="text-center font-medium">{formatted}</div>
   },
 },
-  {
-    accessorKey: "email",
-    header: "Email",
-  },
   {
     accessorKey: "downPayment",
     header: () => <div className="text-center">Down Payment</div>,
@@ -87,11 +80,12 @@ export const columns: ColumnDef<Property>[] = [
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(property.id)}
             >
-              Copy property ID
+              Copy ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={() => navigator}>Edit property</DropdownMenuItem>
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
+            <DropdownMenuItem>Edit</DropdownMenuItem>
+            <DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
+
           </DropdownMenuContent>
         </DropdownMenu>
       )
