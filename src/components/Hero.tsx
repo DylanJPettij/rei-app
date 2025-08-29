@@ -16,13 +16,16 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 
-const Hero = () =>{
-const { handleSubmit } = useForm<renoSchema>()
 
-  const onSubmit = (data: renoSchema) => {
-    console.log("Form data:", data) // ✅ strongly typed
-  }
-    
+function Hero () {  
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) =>{
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    for(let [key,value] of formData.entries()){
+        console.log([key,value]);
+    }
+}
+
     return (
         <>
         
@@ -32,8 +35,8 @@ const { handleSubmit } = useForm<renoSchema>()
             <CardHeader>
             <CardTitle>Enter your property information below!</CardTitle>
         </CardHeader>
+        <form onSubmit={handleSubmit}>
         <CardContent>
-            <form>
             <div className="flex flex-col gap-6">
                 <h1 className="font-bold">Loan Information:</h1>            
             <div className="grid grid-cols-2 gap-6 bg-gray-200 py-3 p-3">
@@ -41,11 +44,10 @@ const { handleSubmit } = useForm<renoSchema>()
                     <div className="grid gap-2">
                         <Label htmlFor="purchasePrice">Purchase Price</Label>
                         <Input
-                        className="bg-white border-2 border-black rounded-md"
-                        
+                        className="bg-white border-2 border-black rounded-md"  
                         id="purchasePrice"
+                        name="purchasePrice"
                         type="number"
-                        
                         required
                         />
                     </div>
@@ -53,7 +55,7 @@ const { handleSubmit } = useForm<renoSchema>()
                     {/* Down Payment */}
                     <div className="grid gap-2">
                         <Label htmlFor="downPayment">Down Payment %</Label>
-                        <Input id="downPayment" 
+                        <Input id="downPayment" name="downPayment" 
                         min={1}
                         max={100}
                         className="bg-white border-2 border-black rounded-md"
@@ -67,7 +69,7 @@ const { handleSubmit } = useForm<renoSchema>()
                         <Label htmlFor="renovationCosts">Renovation Costs</Label>
                 
                     </div>
-                    <Input id="renovationCosts" 
+                    <Input id="renovationCosts" name = "renovationCosts"
                     className="bg-white border-2 border-black rounded-md"
                     type="number" required />
                     </div>
@@ -79,6 +81,7 @@ const { handleSubmit } = useForm<renoSchema>()
                 
                     </div>
                     <Input id="closingCosts" 
+                    name="closingCosts"
                     min={1}
                     max={100}
                     className="bg-white border-2 border-black rounded-md"
@@ -92,6 +95,7 @@ const { handleSubmit } = useForm<renoSchema>()
                 
                     </div>
                     <Input id="payoffTerm" 
+                    name="payoffTerm"
                     className="bg-white border-2 border-black rounded-md"
                     type="number" required />
                     </div>
@@ -102,6 +106,7 @@ const { handleSubmit } = useForm<renoSchema>()
                         <Label htmlFor="interestRate">Interest Rate %</Label>
                     </div>
                     <Input id="interestRate" 
+                    name="interestRate"
                     min={1}
                     max={100}
                     className="bg-white border-2 border-black rounded-md"
@@ -118,6 +123,7 @@ const { handleSubmit } = useForm<renoSchema>()
                         <Label htmlFor="totalRents">Total Rents</Label>
                     </div>
                     <Input id="totalRents" 
+                    name="totalRents"
                     className="bg-white border-2 border-black rounded-md"
                     type="number" required />
                     </div>
@@ -125,7 +131,7 @@ const { handleSubmit } = useForm<renoSchema>()
                     <div className="flex items-center">
                         <Label htmlFor="additionalIncome">Additional Income</Label>
                     </div>
-                    <Input id="additionalIncome" 
+                    <Input id="additionalIncome" name="additionalIncome"
                     className="bg-white border-2 border-black rounded-md"
                     type="number" required />
                     </div>
@@ -137,15 +143,15 @@ const { handleSubmit } = useForm<renoSchema>()
                     <div className="flex items-center">
                         <Label htmlFor="vacancyFactor">Vacancy Factor %</Label>
                     </div>
-                    <Input id="vacancyFactor" 
+                    <Input id="vacancyFactor" name="vacancyFactor"
                     className="bg-white border-2 border-black rounded-md"
-                    type="number" defaultValue={5} required />
+                    type="number" required />
                     </div>
                     <div className="grid gap-2">
                     <div className="flex items-center">
                         <Label htmlFor="maintenanceFactor">Maintenance %</Label>
                     </div>
-                    <Input id="maintenanceFactor" defaultValue={10} 
+                    <Input id="maintenanceFactor"  name="maintenanceFactor"
                     className="bg-white border-2 border-black rounded-md"
                     type="number" required />
                     </div>
@@ -153,9 +159,9 @@ const { handleSubmit } = useForm<renoSchema>()
                     <div className="flex items-center">
                         <Label htmlFor="ManagementFactor">Management %</Label>
                     </div>
-                    <Input id="managementFactor" 
+                    <Input id="managementFactor" name="managementFactor"
                     className="bg-white border-2 border-black rounded-md"
-                    type="number" defaultValue={10} required />
+                    type="number" required />
                     </div>
                 </div>
 
@@ -165,7 +171,7 @@ const { handleSubmit } = useForm<renoSchema>()
                     <div className="flex items-center">
                         <Label htmlFor="monthlyUtilities">Monthly Utility Expense</Label>
                     </div>
-                    <Input id="monthlyUtilities" 
+                    <Input id="monthlyUtilities" name="monthlyUtilities"
                     className="bg-white border-2 border-black rounded-md"
                     type="number" required />
                     </div>
@@ -174,7 +180,7 @@ const { handleSubmit } = useForm<renoSchema>()
                     <div className="flex items-center">
                         <Label htmlFor="additionalExpensesAnnual">Additional Annual Expenses</Label>
                     </div>
-                    <Input id="additionalExpensesAnnual" 
+                    <Input id="additionalExpensesAnnual" name="additionalExpensesAnnual"
                     className="bg-white border-2 border-black rounded-md"
                     type="number" required />
                     </div>
@@ -182,19 +188,21 @@ const { handleSubmit } = useForm<renoSchema>()
                     <div className="flex items-center">
                         <Label htmlFor="taxes">Property Taxes</Label>
                     </div>
-                    <Input id="taxes" 
+                    <Input id="taxes" name="taxes"
                     className="bg-white border-2 border-black rounded-md"
                     type="number" required />
                     </div>
                 </div>
             </div>
-            </form>
+            
+        
         </CardContent>
         <CardFooter className="flex-col gap-2">
-            <Button type="submit" className="bg-green-700 w-full">
+        <Button type="submit" className="bg-green-700 w-full">
             Calculate Return
-            </Button>
+        </Button>
         </CardFooter>
+        </form>
         </Card>
     </div>
         
