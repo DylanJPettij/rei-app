@@ -12,7 +12,7 @@ import {
   
 const MainLayout = () => {
   return (
-    <div className="flex w-full justify-between items-center bg-gray-500 h-10 p-4">
+    <div className="flex w-full justify-between items-center bg-blue-900 h-10 p-4">
     <NavigationMenu>
     <NavigationMenuList>
       <NavigationMenuItem>
