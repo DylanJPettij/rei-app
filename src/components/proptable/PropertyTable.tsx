@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 import { useState } from "react";
 import { Card } from "../ui/card";
 
-const getData = (): Property[] => {
+function getData(): Property[] {
   // Fetch data from your API here.
   return [
     {
@@ -28,33 +28,16 @@ const getData = (): Property[] => {
 
     // ...
   ];
-};
+}
 
-const PropertyTable = () => {
+export default function PropertyTable() {
   const data = getData();
-  const [downPayment, setDownPayment] = useState(0);
-  const [purchasePrice, setPurchasePrice] = useState(0);
-  const [interestRate, setInterestRate] = useState(0);
-
-  const handleSubmit = (event: Property) => {
-    const submission = {
-      id: "44352",
-      purchasePrice: purchasePrice,
-      downPayment: downPayment,
-      interestRate: interestRate,
-    };
-    data.push(submission);
-    console.log(data);
-
-    //this is where this data will be passed to the API to be added to the database "Stub database for now"
-  };
 
   return (
     <>
       <div className="container mx-auto py-10">
-        <div className="flex items-center justify-end py-2"></div>
         <DataTable columns={columns} data={data} />
       </div>
     </>
   );
-};
+}

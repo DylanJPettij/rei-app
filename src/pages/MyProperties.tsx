@@ -1,10 +1,10 @@
 import MainLayout from "@/layouts/MainLayout";
-import PropertyTable from "@/components/proptable/PropertyTable";
+
 const MyProperties = () => {
   return (
     <>
       <MainLayout />
-      <PropertyTable />
+      <div> This is where we are going to feed mortgage rate data</div>
     </>
   );
 };
