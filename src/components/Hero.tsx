@@ -1,31 +1,14 @@
 import { useState } from "react";
 import RenovationCalculatorForm from "./RenovationCalculatorForm";
-import { createEmptyReturnsModel, type ReturnsModel } from "./returnsSchema";
 import RenovationCalcResults from "./RenovationCalcResults";
 import MyProperties from "@/pages/MyProperties";
-import { type rateModel } from "./schema/rateModel";
-import { getRates } from "@/components/BakendIntegration/mortgageRates";
+import { type ReturnsModel } from "./returnsSchema";
 
 function Hero() {
   const [returns, SetReturns] = useState<ReturnsModel>({} as ReturnsModel);
 
   const generateReturns = (e: ReturnsModel) => {
     SetReturns({ ...e });
-  };
-  const [mortgageData, SetMortgageData] = useState<rateModel>({} as rateModel);
-
-  const handleSelect = async () => {
-    const test = await getRates();
-    SetMortgageData(test);
-  };
-  //handleSelect();
-  const exampleRate: rateModel = {
-    week: "2025-08-25",
-    data: {
-      frm_15: 6.15, // 15-year fixed mortgage rate
-      frm_30: 6.85, // 30-year fixed mortgage rate
-      week: "2025-08-25",
-    },
   };
 
   return (
@@ -38,7 +21,7 @@ function Hero() {
 
           <div className="grid space-y-6 ">
             <RenovationCalcResults props={returns} />
-            <MyProperties props={exampleRate} />
+            <MyProperties />
           </div>
         </div>
       </div>

@@ -1,10 +1,8 @@
 import { Label } from "@radix-ui/react-label";
-import { Button } from "./ui/button";
 import { Card, CardContent, CardHeader } from "./ui/card";
 import formatCurrency from "../utils/formatCurrency";
 import formatPercentage from "../utils/formatPercentage";
 import type { ReturnsModel } from "./returnsSchema";
-import clsx from "clsx";
 //{cashOnCashYield, cashflowYield, debtService, netIncome, maintenanceExpense, managementExpense, vacancyExpense}
 
 //need to remove the type any

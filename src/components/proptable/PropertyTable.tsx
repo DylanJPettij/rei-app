@@ -1,8 +1,5 @@
 import { columns, type Property } from "@/components/proptable/Columns";
 import { DataTable } from "@/components/proptable/dataTable";
-import { Button } from "../ui/button";
-import { useState } from "react";
-import { Card } from "../ui/card";
 
 function getData(): Property[] {
   // Fetch data from your API here.
