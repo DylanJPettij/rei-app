@@ -4,11 +4,7 @@ import Hero from "@/components/Hero";
 const RenovationCalculator = () => {
   return (
     <>
-      <MainLayout />
-
-      <div className="flex h-screen justify-center items-center bg-gray-800">
-        <Hero />
-      </div>
+      <Hero />
     </>
   );
 };

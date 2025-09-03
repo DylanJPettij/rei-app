@@ -10,13 +10,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LoginForm />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/my-properties" element={<MyProperties />} />
-        <Route
-          path="/renovation-calculator"
-          element={<RenovationCalculator />}
-        />
+        <Route path="/" element={<RenovationCalculator />} />
       </Routes>
     </Router>
   );

@@ -1,5 +1,9 @@
 // utils/formatCurrency.ts
-const formatPercentage = (amount: number): string => {
+const formatPercentage = (amount: number | null): string => {
+  if (amount === undefined) return "";
+  if (amount === null) {
+    return "";
+  }
   return new Intl.NumberFormat("en-US", {
     style: "percent",
     minimumFractionDigits: 2,
