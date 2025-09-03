@@ -1,6 +1,6 @@
 import axios from "axios";
 const apiClient = axios.create({
-  baseURL: "http://api.reicalculator.net:8080",
+  baseURL: "https://api.reicalculator.net:8080",
   headers: {
     "Content-Type": "application/json",
   },
